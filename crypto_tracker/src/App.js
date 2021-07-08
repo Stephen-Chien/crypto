@@ -1,10 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
-
+ import './App.css';
+ import Api from './components/Api'
 function App() {
   return (
     <div className="App">
-      <p>Hello World!</p>
+      <Api />
     </div>
   );
 }
