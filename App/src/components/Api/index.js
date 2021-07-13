@@ -21,25 +21,27 @@ export default class Api extends Component {
 
     render() {
         return (
-            /*
             <div>
                 {this.state.isLoading || !this.state.coin ? <div>Loading....</div> : 
                 
-                
                 <div>
                     {this.state.coin.id}
+                    <br/>
                     {this.state.coin.symbol}
-                    {this.state.coin.marketcap}
+                    <br/>
+                    {this.state.coin.market_cap}
+                    <br/>
                     {this.state.coin.image}
-                    {this.state.coin.currentPrice}
+                    <br/>
+                    {this.state.coin.current_price}
+                    <br/>
                 
                 </div>}
 
 
             </div>
 
-            */
-           <div></div>
+            
         )
         
     }
