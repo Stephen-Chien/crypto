@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
+import { useState } from 'react';
 
-export class SearchBar extends Component {
-    render() {
-        return (
-            <div className = "SearchBar">
-                <input type = "text" placeholder = "Search"></input>
-                
-            </div>
-        )
-    }
+const SearchBar = () => {
+
+    
+
+
+
+    return ( null );
 }
-
-export default SearchBar
+ 
+export default SearchBar;
