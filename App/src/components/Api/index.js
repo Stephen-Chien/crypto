@@ -19,10 +19,9 @@ function Api() {
       });
   }, []);
 
-
-  let filteredCoins = coins.filter(coin => {
-    return coin.id.toLowerCase().includes(searchTerm.toLowerCase())
-  })
+  let filteredCoins = coins.filter((coin) => {
+    return coin.id.toLowerCase().includes(searchTerm.toLowerCase());
+  });
 
   return (
     <div className="Api">
@@ -34,10 +33,12 @@ function Api() {
         }}
       />
 
-      {
-        filteredCoins.map((coin) => (
-          <p key={coin.id}> {coin.id}</p>
-        ))}
+      {filteredCoins.map((coin) => (
+        <div>
+        <p key={coin.id}> {coin.id} {coin.symbol} ${coin.current_price.toLocaleString()} ${coin.market_cap.toLocaleString()}</p>
+        <img src={coin.image} alt='crypto'/>
+        </div>
+      ))}
     </div>
   );
 }
