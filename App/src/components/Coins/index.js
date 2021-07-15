@@ -1,14 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
+import Api from '../Api';
 
-
-class Coins extends Component {
-    render() { 
-        return (
-            <div>
-                {this.props.id}
-            </div>
-         );
-    }
+const Coins = (props) => {
+    return (  
+        <div>
+            
+        </div>
+    );
 }
  
 export default Coins;

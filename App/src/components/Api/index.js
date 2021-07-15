@@ -1,47 +1,45 @@
-import React, { Component } from "react";
-import "./index.css"
-import Coins from "../Coins";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./index.css";
 
-export default class Api extends Component {
+function Api() {
+  let [coins, setCoins] = useState([]);
+  let [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+      )
+      .then((res) => {
+        setCoins(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
 
-  state = {
-    isLoading: true,
-    coin: null,
-  };
+  let filteredCoins = coins.filter(coin => {
+    return coin.id.toLowerCase().includes(searchTerm.toLowerCase())
+  })
 
-  async componentDidMount() {
-    const url =
-      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false";
-    const response = await fetch(url);
-    const data = await response.json();
-    this.setState({ coin: data, isLoading: false });
-  }
+  return (
+    <div className="Api">
+      <input
+        type="text"
+        placeholder="Search"
+        onChange={(event) => {
+          setSearchTerm(event.target.value);
+        }}
+      />
 
-  render() {
-    return (
-      <div className="API">
-        
-        <input type="text" placeholder="Search"></input>
-        
-
-        {this.state.isLoading || !this.state.coin ? (
-          <div>Loading....</div>
-        ) : (
-          this.state.coin.map((coin) => {
-            return (
-              <Coins
-                key = {coin.id}
-                id = {coin.id} 
-                symbol = {coin.symbol} 
-                market_cap = {coin.market_cap.toLocaleString()} 
-                current_price = {coin.current_price.toLocaleString()}
-              />
-              
-            );
-          })
-        )}
-      </div>
-    );
-  }
+      {
+        filteredCoins.map((coin) => (
+          <p key={coin.id}> {coin.id}</p>
+        ))}
+    </div>
+  );
 }
+
+export default Api;
