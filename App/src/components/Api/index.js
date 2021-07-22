@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./index.css";
+import Coins from "../Coins";
 
 function Api() {
   let [coins, setCoins] = useState([]);
@@ -34,11 +35,21 @@ function Api() {
       />
 
       {filteredCoins.map((coin) => (
-        <div>
-        <p key={coin.id}> {coin.id} {coin.symbol} ${coin.current_price.toLocaleString()} ${coin.market_cap.toLocaleString()}</p>
-        <img src={coin.image} alt='crypto'/>
-        </div>
+        <Coins
+          key={coin.id}
+          id={coin.id}
+          symbol={coin.symbol}
+          current_price={coin.current_price.toLocaleString()}
+          market_cap={coin.market_cap.toLocaleString()}
+          image={coin.image}
+        />
       ))}
+
+
+
+
+
+
     </div>
   );
 }
