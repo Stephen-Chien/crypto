@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Bar, Line } from "react-chartjs-2";
+import moment from "moment";
 
 const CoinGraph = () => {
   let [coins, setCoins] = useState([]);
@@ -8,7 +9,7 @@ const CoinGraph = () => {
   useEffect(() => {
     axios
       .get(
-        "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30&interval=daily"
+        `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30&interval=daily`
       )
       .then((res) => {
         setCoins(res.data.prices);
@@ -18,43 +19,130 @@ const CoinGraph = () => {
       });
   }, []);
 
-  let chartData=
-  {
-    labels: ['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
-    datasets:[
-      {
-        label:'Population',
-        data:[
-          617594,
-          181045,
-          153060,
-          106519,
-          105162,
-          95072
-        ],
-        backgroundColor:[
-          'rgba(255, 99, 132, 0.6)',
-          'rgba(54, 162, 235, 0.6)',
-          'rgba(255, 206, 86, 0.6)',
-          'rgba(75, 192, 192, 0.6)',
-          'rgba(153, 102, 255, 0.6)',
-          'rgba(255, 159, 64, 0.6)',
-          'rgba(255, 99, 132, 0.6)'
-        ],
-        fill: true,
+  let labels = [];
+
+  let filteredLabels = [];
+
+  for (let z = 0; z < coins.length; z++) {
+    for (let j = 0; j < coins.length; j++) {
+      if (coins[z][j] > 1000000) {
+        filteredLabels.push(coins[z][j]);
       }
-    ]
+    }
   }
+
+  if (filteredLabels.length === 31) {
+    for (let i = 30; i > 0; i--) {
+      labels.push(moment().subtract(i, "days").format("l"));
+    }
+  } else if (filteredLabels.length === 25) {
+    for (let i = 24; i > 0; i--) {
+      labels.push(moment().subtract(i, "hours").format("LT"));
+    }
+  } else if (filteredLabels.length === 8) {
+    for (let i = 7; i > 0; i--) {
+      labels.push(moment().subtract(i, "days").format("l"));
+    }
+  } else {
+    for (let i = filteredLabels.length; i > 0; i--) {
+      labels.push(moment().subtract(i, "days").format("l"));
+    }
+
+  }
+
+  let price = [];
+
+  for (let z = 0; z < coins.length; z++) {
+    for (let j = 0; j < coins.length; j++) {
+      if (coins[z][j] < 1000000) {
+        price.push(coins[z][j]);
+      }
+    }
+  }
+
+  const handleChange = () => {
+    axios
+      .get(
+        `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=1&interval=hourly`
+      )
+      .then((res) => {
+        setCoins(res.data.prices);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+ 
+  const handleChange2 = () => {
+    axios
+      .get(
+        `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=7&interval=daily`
+      )
+      .then((res) => {
+        setCoins(res.data.prices);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleChange3 = () => {
+    axios
+      .get(
+        `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30&interval=daily`
+      )
+      .then((res) => {
+        setCoins(res.data.prices);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+
+  const handleChange4 = () => {
+    axios
+      .get(
+        `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=max&interval=monthly`
+      )
+      .then((res) => {
+        setCoins(res.data.prices);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+ 
+
+
+  let data = {
+    labels: labels,
+    datasets: [
+      {
+        label: "Price",
+        data: price,
+        fill: true,
+        backgroundColor: "rgb(255, 99, 132)",
+        borderColor: "rgba(255, 99, 132, 0.2)",
+      },
+    ],
+  };
 
   return (
     <div>
-    <h1>Hello</h1>
-    <Line
-      data={chartData}
-      width={100}
-      height={50}
-      options={{ maintainAspectRatio: true }}
-    />
+      <button onClick={handleChange}>1d</button>
+      <button onClick={handleChange2}>7d</button>
+      <button onClick={handleChange3}>30d</button>
+      <button onClick={handleChange4}>All-Time</button>
+
+      <Line
+        data={data}
+        width={50}
+        height={25}
+        options={{ maintainAspectRatio: true }}
+      />
     </div>
   );
 };
