@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./index.css";
 import Coins from "../Coins";
 
 function Api() {
@@ -25,33 +24,47 @@ function Api() {
   });
 
   return (
-    <div className="Api">
-      <input
-        type="text"
-        placeholder="Search"
-        onChange={(event) => {
-          setSearchTerm(event.target.value);
-        }}
-      />
-
-      {filteredCoins.map((coin) => (
-        <Coins
-          key={coin.id}
-          id={coin.id}
-          symbol={coin.symbol}
-          current_price={coin.current_price.toLocaleString()}
-          market_cap={coin.market_cap.toLocaleString()}
-          image={coin.image}
+    <div className='coin-app'>
+      <div className='coin-search'>
+        <h1 className='coin-text'>Search for  a  currency</h1>
+        <input
+          className="coin-input"
+          placeholder="Search"
+          onChange={(event) => {
+            setSearchTerm(event.target.value);
+          }}
         />
+      </div>
+      {filteredCoins.map((coin) => (
+        <div className='coin-containers'>
+          <div className='coin-rows'>
+            <div className='coin'>
+              <img src={coin.image} alt='crypto' />
+              <h1>{coin.name}</h1>
+              <p className='coin-symbols'> {coin.symbol} </p>
+            </div>
+
+            <div className='coin-datas'>
+              <p className='coin-prices'>${coin.current_price}</p>
+              <p className='coin-volumse'>${coin.total_volume.toLocaleString()}</p>
+
+
+              {coin.price_change_24h < 0 ? (
+                <p className='coin-percents red'>${coin.price_change_24h.toFixed(2)}%</p>
+              ) : (
+                <p className='coin-percents green'>{coin.price_change_24h.toFixed(2)}%</p>
+              )}
+
+              <p className='coin-marketcaps'>
+                Mkt Cap: ${coin.market_cap.toLocaleString()}
+              </p>
+            </div>
+          </div>
+        </div>
+
       ))}
-
-
-
-
-
-
     </div>
   );
-}
 
+}
 export default Api;
