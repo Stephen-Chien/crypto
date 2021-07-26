@@ -2,14 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Bar, Line } from "react-chartjs-2";
 import moment from "moment";
+import 'materialize-css/dist/css/materialize.min.css'
 
-const CoinGraph = () => {
+const CoinGraph = ({match}) => {
   let [coins, setCoins] = useState([]);
 
   useEffect(() => {
     axios
       .get(
-        `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30&interval=daily`
+        `https://api.coingecko.com/api/v3/coins/${match.params.id}/market_chart?vs_currency=usd&days=30&interval=daily`
       )
       .then((res) => {
         setCoins(res.data.prices);
@@ -17,6 +18,7 @@ const CoinGraph = () => {
       .catch((error) => {
         console.log(error);
       });
+
   }, []);
 
   let labels = [];
@@ -63,7 +65,7 @@ const CoinGraph = () => {
   const handleChange = () => {
     axios
       .get(
-        `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=1&interval=hourly`
+        `https://api.coingecko.com/api/v3/coins/${match.params.id}/market_chart?vs_currency=usd&days=1&interval=hourly`
       )
       .then((res) => {
         setCoins(res.data.prices);
@@ -77,7 +79,7 @@ const CoinGraph = () => {
   const handleChange2 = () => {
     axios
       .get(
-        `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=7&interval=daily`
+        `https://api.coingecko.com/api/v3/coins/${match.params.id}/market_chart?vs_currency=usd&days=7&interval=daily`
       )
       .then((res) => {
         setCoins(res.data.prices);
@@ -90,7 +92,7 @@ const CoinGraph = () => {
   const handleChange3 = () => {
     axios
       .get(
-        `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30&interval=daily`
+        `https://api.coingecko.com/api/v3/coins/${match.params.id}/market_chart?vs_currency=usd&days=30&interval=daily`
       )
       .then((res) => {
         setCoins(res.data.prices);
@@ -104,7 +106,7 @@ const CoinGraph = () => {
   const handleChange4 = () => {
     axios
       .get(
-        `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=max&interval=monthly`
+        `https://api.coingecko.com/api/v3/coins/${match.params.id}/market_chart?vs_currency=usd&days=max&interval=monthly`
       )
       .then((res) => {
         setCoins(res.data.prices);
@@ -123,7 +125,7 @@ const CoinGraph = () => {
       {
         label: "Price",
         data: price,
-        fill: true,
+        fill: false,
         backgroundColor: "rgb(255, 99, 132)",
         borderColor: "rgba(255, 99, 132, 0.2)",
       },
@@ -132,16 +134,14 @@ const CoinGraph = () => {
 
   return (
     <div>
-      <button onClick={handleChange}>1d</button>
-      <button onClick={handleChange2}>7d</button>
-      <button onClick={handleChange3}>30d</button>
-      <button onClick={handleChange4}>All-Time</button>
+      <button className="waves-effect waves-light btn" onClick={handleChange}>1d</button>
+      <button className="waves-effect waves-light btn" onClick={handleChange2}>7d</button>
+      <button className="waves-effect waves-light btn" onClick={handleChange3}>30d</button>
+      <button className="waves-effect waves-light btn" onClick={handleChange4}>All-Time</button>
 
       <Line
         data={data}
-        width={50}
-        height={25}
-        options={{ maintainAspectRatio: true }}
+        options={{ maintainAspectRatio: true}}
       />
     </div>
   );

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Coins from "../Coins";
+import {Link} from 'react-router-dom'
 
 function Api() {
   let [coins, setCoins] = useState([]);
@@ -26,7 +27,7 @@ function Api() {
   return (
     <div className='coin-app'>
       <div className='coin-search'>
-        <h1 className='coin-text'>Search for  a  currency</h1>
+        <h1 className='coin-text'>Search for a currency</h1>
         <input
           className="coin-input"
           placeholder="Search"
@@ -40,7 +41,7 @@ function Api() {
           <div className='coin-rows'>
             <div className='coin'>
               <img src={coin.image} alt='crypto' />
-              <h1>{coin.name}</h1>
+              <h1><Link to={ `/coin/${coin.id}`}>{coin.name}</Link></h1>
               <p className='coin-symbols'> {coin.symbol} </p>
             </div>
 

@@ -1,18 +1,13 @@
 import "./App.css";
-import Api from "./components/Api";
-import SearchBar from "./components/SearchBar";
-import React from "react";
-import ReactDOM from "react-dom";
-import CoinGraph from "./components/CoinGraph";
-import Coins from "./components/Coins"
-
+import App from "./App"
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 
 
 ReactDOM.render(
-  <div>
-    <CoinGraph/>
-  
-  </div>
-  , document.getElementById("root")
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
 );
