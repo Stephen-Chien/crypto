@@ -53,13 +53,13 @@ function Api() {
 								${coin.total_volume.toLocaleString()}
 							</p>
 
-							{coin.price_change_24h < 0 ? (
+							{coin.price_change_percentage_24h < 0 ? (
 								<p className="coin-percents-red">
-									${coin.price_change_24h.toFixed(2)}%
+									${coin.price_change_percentage_24h.toFixed(2)}%
 								</p>
 							) : (
 								<p className="coin-percents-green">
-									{coin.price_change_24h.toFixed(2)}%
+									{coin.price_change_percentage_24h.toFixed(2)}%
 								</p>
 							)}
 
