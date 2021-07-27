@@ -1,9 +1,9 @@
 import "./App.css";
-import Api from "./components/Api";
+import Api from "./components/Api/Api";
 import React from "react";
 import ReactDOM from "react-dom";
-import CoinGraph from "./components/CoinGraph";
-import Coins from "./components/Coins"
+import CoinGraph from "./components/CoinGraph/Graph";
+import Coins from "./components/Coins/Coins"
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom"
 
 
