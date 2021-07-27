@@ -51,13 +51,14 @@
 .coin-marketcap {
     width:155px;
 }
-.coin-percent {
-    width: 75%;
-}
-.red {
+.coin-percents-red {
     color:#f00606;
+    
+
 }
-.green{
+
+
+.coin-percents-green{
     color:#11d811;
 }
 

@@ -51,9 +51,9 @@ function Api() {
 
 
               {coin.price_change_24h < 0 ? (
-                <p className='coin-percents red'>${coin.price_change_24h.toFixed(2)}%</p>
+                <p className='coin-percents-red'>${coin.price_change_24h.toFixed(2)}%</p>
               ) : (
-                <p className='coin-percents green'>{coin.price_change_24h.toFixed(2)}%</p>
+                <p className='coin-percents-green'>{coin.price_change_24h.toFixed(2)}%</p>
               )}
 
               <p className='coin-marketcaps'>
