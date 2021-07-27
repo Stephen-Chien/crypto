@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Bar, Line } from "react-chartjs-2";
 import moment from "moment";
-import 'materialize-css/dist/css/materialize.min.css'
+
 
 const CoinGraph = ({match}) => {
   let [coins, setCoins] = useState([]);
@@ -123,7 +123,7 @@ const CoinGraph = ({match}) => {
     labels: labels,
     datasets: [
       {
-        label: "Price",
+        label: `${match.params.id.charAt(0).toUpperCase()}${match.params.id.slice(1)} Price`,
         data: price,
         fill: false,
         backgroundColor: "rgb(255, 99, 132)",
