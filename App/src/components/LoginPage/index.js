@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import fire from '../fire';
+// import fire from '../fire';
+import fire from '../Fire';
 import Login from '../Login';
 
 const LoginPage = () => {

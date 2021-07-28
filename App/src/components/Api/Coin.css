@@ -1,6 +1,8 @@
 .coin-containers {
 	display: flex;
 	justify-content: center;
+	position:relative;
+	bottom:30px;
 }
 
 .coin-rows {
