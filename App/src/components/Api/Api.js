@@ -9,7 +9,7 @@ function Api() {
 	let [searchTerm, setSearchTerm] = useState('');
 
 	const HoverText = styled.h1`
-		color: #fff;
+		color: #999;
 		:hover {
 			color: #EE82EE;
 			cursor: pointer;
