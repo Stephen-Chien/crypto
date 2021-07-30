@@ -1,8 +1,8 @@
 .coin-containers {
 	display: flex;
 	justify-content: center;
-	position:relative;
-	bottom:30px;
+	position: relative;
+	bottom: 30px;
 }
 
 .coin-rows {
@@ -74,4 +74,29 @@
 	height: 40px;
 	font-size: 20px;
 	padding-left: 10px;
+}
+
+@media only screen and (max-width: 760px) {
+	.coin-rows {
+		display: flex;
+		flex-direction: row;
+		justify-content: start;
+		align-items: center;
+		height: 60px;
+		border-bottom: 1px solid #d7d7d7;
+		width: 350px;
+	}
+
+	.coin {
+		display: block;
+		padding-block:2px;
+		
+	}
+
+	.coin-datas {
+		display: block;
+		justify-content: space-evenly;
+		width: 100%;
+	}
+	
 }
