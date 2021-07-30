@@ -138,11 +138,12 @@ const CoinGraph = ({match}) => {
       <button className="waves-effect waves-light btn" onClick={handleChange2}>7d</button>
       <button className="waves-effect waves-light btn" onClick={handleChange3}>30d</button>
       <button className="waves-effect waves-light btn" onClick={handleChange4}>All-Time</button>
-
+      <div>
       <Line
         data={data}
         options={{ maintainAspectRatio: true}}
       />
+      </div>
     </div>
   );
 };

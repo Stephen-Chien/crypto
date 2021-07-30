@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 function Api() {
 	let [coins, setCoins] = useState([]);
 	let [searchTerm, setSearchTerm] = useState('');
+	
 
 	useEffect(() => {
 		axios
@@ -25,52 +26,57 @@ function Api() {
 	});
 
 	return (
-		<div className="coin-app">
-			<div className="coin-search">
-				<h1 className="coin-text">Search for a currency</h1>
-				<input
-					className="coin-input"
-					placeholder="Search"
-					onChange={(event) => {
-						setSearchTerm(event.target.value);
-					}}
-				/>
-			</div>
-			{filteredCoins.map((coin) => (
-				<div className="coin-containers">
-					<div className="coin-rows">
-						<div className="coin">
-							<img src={coin.image} alt="crypto" />
-							<h1>
-								<Link to={`/coin/${coin.id}`}>{coin.name}</Link>
-							</h1>
-							<p className="coin-symbols"> {coin.symbol} </p>
-						</div>
+		
+			
+			<div className="coin-app">
+				
 
-						<div className="coin-datas">
-							<p className="coin-prices">${coin.current_price}</p>
-							<p className="coin-volumse">
-								${coin.total_volume.toLocaleString()}
-							</p>
+				<div className="coin-search">
+					<h1 className="coin-text">Search for a currency</h1>
+					<input
+						className="coin-input"
+						placeholder="Search"
+						onChange={(event) => {
+							setSearchTerm(event.target.value);
+						}}
+					/>
+				</div>
+				{filteredCoins.map((coin) => (
+					<div className="coin-containers">
+						<div className="coin-rows">
+							<div className="coin">
+								<img src={coin.image} alt="crypto" />
+								<h1>
+									<Link to={`/coin/${coin.id}`}>{coin.name}</Link>
+								</h1>
+								<p className="coin-symbols"> {coin.symbol} </p>
+							</div>
 
-							{coin.price_change_percentage_24h < 0 ? (
-								<p className="coin-percents-red">
-									${coin.price_change_percentage_24h.toFixed(2)}%
+							<div className="coin-datas">
+								<p className="coin-prices">${coin.current_price}</p>
+								<p className="coin-volumse">
+									${coin.total_volume.toLocaleString()}
 								</p>
-							) : (
-								<p className="coin-percents-green">
-									{coin.price_change_percentage_24h.toFixed(2)}%
-								</p>
-							)}
 
-							<p className="coin-marketcaps">
-								Mkt Cap: ${coin.market_cap.toLocaleString()}
-							</p>
+								{coin.price_change_percentage_24h < 0 ? (
+									<p className="coin-percents-red">
+										${coin.price_change_percentage_24h.toFixed(2)}%
+									</p>
+								) : (
+									<p className="coin-percents-green">
+										{coin.price_change_percentage_24h.toFixed(2)}%
+									</p>
+								)}
+
+								<p className="coin-marketcaps">
+									Mkt Cap: ${coin.market_cap.toLocaleString()}
+								</p>
+							</div>
 						</div>
 					</div>
-				</div>
-			))}
-		</div>
+				))}
+			</div>
+		
 	);
 }
 export default Api;
