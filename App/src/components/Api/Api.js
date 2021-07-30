@@ -47,7 +47,7 @@ function Api() {
 							<div className="coin">
 								<img src={coin.image} alt="crypto" />
 								<h1>
-									<Link to={`/coin/${coin.id}`}>{coin.name}</Link>
+									<Link class='individual-coin' to={`/coin/${coin.id}`}>{coin.name}</Link>
 								</h1>
 								<p className="coin-symbols"> {coin.symbol} </p>
 							</div>
