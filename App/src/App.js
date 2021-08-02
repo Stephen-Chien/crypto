@@ -1,11 +1,10 @@
 import './App.css';
 import Api from './components/Api/Api';
-import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
+import React, { useState} from 'react';
 import CoinGraph from './components/CoinGraph/Graph';
-import Coins from './components/Coins/Coins';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import LoginPage from './components/LoginPage';
+import News from "./components/News"
 
 function App() {
 	let [darkMode, setDarkMode] = useState(true);
@@ -27,6 +26,7 @@ function App() {
 					<Route exact path="/loginpage" component={LoginPage} />
 					<Route exact path="/" component={Api} />
 					<Route path="/coin/:id" component={CoinGraph} />
+					<Route exact path="/news" component={News} />
 				</Switch>
 			</Router>
 		</div>
