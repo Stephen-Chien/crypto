@@ -83,7 +83,7 @@
 
 
 
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 768px) {
 	.coin-rows {
 		display: flex;
 		flex-direction: row;
@@ -91,19 +91,54 @@
 		align-items: center;
 		height: 60px;
 		border-bottom: 1px solid #d7d7d7;
-		width: 350px;
+		width: 760px;
 	}
 
 	.coin {
-		display: block;
-		padding-block:2px;
+		display:flex;
 		
 	}
 
 	.coin-datas {
-		display: block;
 		justify-content: space-evenly;
 		width: 100%;
 	}
 	
+}
+
+@media only screen and (max-width: 360px) {
+  
+	.coin-app{
+		width:100%;
+	}
+	.coin-containers {
+	display: flex;
+	width:100%
+}
+	    
+	.coin-rows{
+ 		display: flex;
+		flex-direction: row;
+		justify-content: start;
+		align-items: center;
+		height: 60px;
+		border-bottom: 1px solid #d7d7d7;
+		width: 100%;
+		}
+
+
+       .coin{
+		display:flex;
+	  }
+      
+	  .coin-datas {
+		justify-content: space-evenly;
+	}
+
+
+
+
+
+
+
 }
