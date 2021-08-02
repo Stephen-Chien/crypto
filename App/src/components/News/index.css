@@ -1,0 +1,19 @@
+
+  .containerl {
+    width: 600px;
+    border: 1px solid #CCC;
+    box-shadow: 0 1px 5px #CCC;
+    border-radius: 5px;
+    margin: 25px auto;
+    overflow: hidden;
+  }
+
+  .containerl h1 {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    font-weight: normal;
+    color: #888;
+    text-align: center;
+  }
+ 
