@@ -19,7 +19,7 @@ const CoinGraph = ({match}) => {
         console.log(error);
       });
 
-  }, []);
+  });
 
   let labels = [];
 
