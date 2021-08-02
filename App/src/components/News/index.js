@@ -23,7 +23,6 @@ export default function News() {
 
     return (
         <div>
-            {console.log(news)}
 
             {news.map((item) => {
                 return (

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Bar, Line } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 import moment from "moment";
 
-
-const CoinGraph = ({match}) => {
+const CoinGraph = ({ match }) => {
   let [coins, setCoins] = useState([]);
+  let [values, setValues] = useState([]);
 
   useEffect(() => {
     axios
@@ -18,8 +18,20 @@ const CoinGraph = ({match}) => {
       .catch((error) => {
         console.log(error);
       });
+  }, []);
 
-  });
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.coingecko.com/api/v3/coins/${match.params.id}?localization=false&sparkline=true`
+      )
+      .then((res) => {
+        setValues(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   let labels = [];
 
@@ -49,7 +61,6 @@ const CoinGraph = ({match}) => {
     for (let i = filteredLabels.length; i > 0; i--) {
       labels.push(moment().subtract(i, "days").format("l"));
     }
-
   }
 
   let price = [];
@@ -75,7 +86,6 @@ const CoinGraph = ({match}) => {
       });
   };
 
- 
   const handleChange2 = () => {
     axios
       .get(
@@ -102,7 +112,6 @@ const CoinGraph = ({match}) => {
       });
   };
 
-
   const handleChange4 = () => {
     axios
       .get(
@@ -116,14 +125,13 @@ const CoinGraph = ({match}) => {
       });
   };
 
- 
-
-
   let data = {
     labels: labels,
     datasets: [
       {
-        label: `${match.params.id.charAt(0).toUpperCase()}${match.params.id.slice(1)} Price`,
+        label: `${match.params.id
+          .charAt(0)
+          .toUpperCase()}${match.params.id.slice(1)} Price`,
         data: price,
         fill: false,
         backgroundColor: "rgb(255, 99, 132)",
@@ -134,16 +142,23 @@ const CoinGraph = ({match}) => {
 
   return (
     <div>
-      <button className="waves-effect waves-light btn" onClick={handleChange}>1d</button>
-      <button className="waves-effect waves-light btn" onClick={handleChange2}>7d</button>
-      <button className="waves-effect waves-light btn" onClick={handleChange3}>30d</button>
-      <button className="waves-effect waves-light btn" onClick={handleChange4}>All-Time</button>
+      <button className="waves-effect waves-light btn" onClick={handleChange}>
+        1d
+      </button>
+      <button className="waves-effect waves-light btn" onClick={handleChange2}>
+        7d
+      </button>
+      <button className="waves-effect waves-light btn" onClick={handleChange3}>
+        30d
+      </button>
+      <button className="waves-effect waves-light btn" onClick={handleChange4}>
+        All-Time
+      </button>
       <div>
-      <Line
-        data={data}
-        options={{ maintainAspectRatio: true}}
-      />
+        <Line data={data} options={{ maintainAspectRatio: true }} />
       </div>
+      {console.log(values)}
+      The current price of {values.id} 
     </div>
   );
 };

@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Coin.css";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import CoinGraph from "../CoinGraph/Graph";
 
 function Api() {
   let [coins, setCoins] = useState([]);
@@ -33,7 +34,10 @@ function Api() {
     return coin.id.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
+  
+
   return (
+	
     <div>
       
         <button>
