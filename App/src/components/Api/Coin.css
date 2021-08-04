@@ -133,9 +133,10 @@
       .coin-datas {
         justify-content: space-evenly;
 		padding-left:300px;
+		position: relative;
+		top: -20px;
     }
      
-	.wrapper { overflow-x: auto; }
     .wrapper table { white-space: nowrap }
 
     
