@@ -22,6 +22,11 @@
 	min-width: 301px;
 }
 
+::placeholder {
+	color: white;
+	opacity: 1; 
+  }
+
 .coin h1 {
 	font-size: 16px;
 	width: 152px;
