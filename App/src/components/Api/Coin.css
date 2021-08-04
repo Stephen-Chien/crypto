@@ -81,7 +81,9 @@
     text-decoration: none;
 }
 
-
+.coin-text{
+	margin-top:20px;
+}
 
 @media only screen and (max-width: 768px) {
 	.coin-rows {
@@ -107,38 +109,8 @@
 }
 
 @media only screen and (max-width: 360px) {
-  
-	.coin-app{
-		width:100%;
-	}
 	.coin-containers {
-	display: flex;
-	width:100%
-}
-	    
-	.coin-rows{
- 		display: flex;
-		flex-direction: row;
-		justify-content: start;
-		align-items: center;
-		height: 60px;
-		border-bottom: 1px solid #d7d7d7;
-		width: 100%;
-		}
-
-
-       .coin{
-		display:flex;
-	  }
-      
-	  .coin-datas {
-		justify-content: space-evenly;
+		display: flex;
+		flex-direction:row-reverse;
 	}
-
-
-
-
-
-
-
 }

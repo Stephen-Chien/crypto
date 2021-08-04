@@ -23,20 +23,16 @@
 	height: 100%;
   }
   
-  span {
-	font-size: 40px;
-  }
-  
   .dark-mode {
 	background-color: #1a1919;
-	color: #999;
+	color:#999;
 	transition: background-color 0.25s ease-in-out;
+	
   }
   
   .light-mode {
-	background-color: #fff;
+	background-color:  #D1D6FF;
 	color: #333;
-	height: 100%;
 	transition: background-color 0.25s ease-in-out;
   }
   
@@ -149,16 +145,16 @@
 	height: 49px;
 	border-radius: 4px;
 	border: none;
-	background-image: linear-gradient(
+	background-image:linear-gradient(
 		-255deg,
 		#ac32e4 0%,
-		#7918f2 48%,
+		#603bbb 48%,
 		#4801ff 100%
 	);
 	color: #e2e2e2;
 }
 .coin-input::placeholder {
-	color: #e2e2e2;
+
 }
 .Api {
 	display: flex;
