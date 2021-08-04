@@ -9,6 +9,7 @@ import News from "./components/News"
 function App() {
 	let [darkMode, setDarkMode] = useState(true);
 	return (
+		
 		<div className={darkMode ? 'dark-mode' : 'light-mode'}>
 			<div className="container">
 				<span style={{ color: darkMode ? 'grey' : 'yellow' }}>☀︎</span>
@@ -30,6 +31,7 @@ function App() {
 				</Switch>
 			</Router>
 		</div>
+	
 	);
 }
 
