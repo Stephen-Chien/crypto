@@ -57,6 +57,8 @@ function Api() {
           />
         </div>
         {filteredCoins.map((coin) => (
+          <div class = 'wrapper'>
+          <table></table>
           <div className="coin-containers">
             <div className="coin-rows">
               <div className="coin">
@@ -90,6 +92,7 @@ function Api() {
                 </p>
               </div>
             </div>
+          </div>
           </div>
         ))}
       </div>

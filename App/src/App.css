@@ -25,9 +25,9 @@
 
   
   .dark-mode {
-
+    display: inline-block; 
 	min-width: 100%; 
-	min-height: 100%; 
+	min-height: 500%; 
 	background-color: #1a1919;
 	color:#999;
 	transition: background-color 0.25s ease-in-out;
